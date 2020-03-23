@@ -1,0 +1,33 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vareliste</title>
+    <link rel="stylesheet" href="/css/index.css">
+
+</head>
+<body>
+    <h1>Vareliste</h1>
+    <table id="products">
+        <tr>
+            <th>Varenavn</th>
+            <th>Pris</th>
+            <th>Beskrivelse</th>
+        </tr>
+
+        <tr th:each="product : ${prod}">
+            <td th:text="${product.name}">x</td>
+            <td th:text="${product.price}">x</td>
+            <td th:text="${product.description}">x</td>
+            <td><a th:href="@{'/update/' + ${product.id}}">Opdater</a></td>
+            <td><a th:href="@{'/delete/' + ${product.id}}">Slet</a></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <form action="create">
+        <input type="submit" value="Tilfoej nyt produkt" />
+    </form>
+
+</body>
+</html>
